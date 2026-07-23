@@ -14,8 +14,15 @@ export class ProductoService {
 
 
 
+
+
     obtenerProductos(): Observable<Producto[]>{
         return this.clienteHttp.get<Producto[]>(this.urlBase + "/todos");
+    }
+
+
+    crearProducto(producto: Producto): Observable<Object>{
+        return this.clienteHttp.post(this.urlBase + "/crear", producto)
     }
 
 }
