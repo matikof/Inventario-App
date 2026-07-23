@@ -1,0 +1,26 @@
+<div class="container text-center">
+  <div>
+    <h3>Inventario App</h3>
+  </div>
+
+  <table class="table table-stripped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Existencia</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (producto of productos; track producto.id) {
+        <tr>
+          <th scope="row">{{producto.id}}</th>
+          <td>{{producto.descripcion}}</td>
+          <td>{{producto.precio}}</td>
+          <td>{{producto.existencia}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
