@@ -5,7 +5,7 @@
   <!-- 1. Se asigna la referencia #productoForm -->
   <form #productoForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-      <label for="descripcion" class="form-label">Descripción</label>
+      <label for="descripcion" class="form-label">Descripcion</label>
       <!-- 2. Se asegura de tener el atributo required (no es necesario el ="true") -->
       <input
         type="text"
@@ -46,6 +46,6 @@
       />
     </div>
     <!-- 3. El botón se deshabilita automáticamente si algún campo 'required' está vacío -->
-    <button type="submit" class="btn btn-primary" [disabled]="productoForm.invalid">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="productoForm.invalid">Guardar Cambios</button>
   </form>
 </div>

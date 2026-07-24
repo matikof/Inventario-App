@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { ProductoService } from '../servicios/producto-service';
 import { Producto } from '../model/producto.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-producto-lista',
@@ -13,6 +14,7 @@ export class ProductoLista implements OnInit{
 
   private productoService = inject(ProductoService);
   private cdr = inject(ChangeDetectorRef);
+  private enrutador = inject(Router)
 
   ngOnInit(): void {
     this.obtenerProductos();
@@ -25,6 +27,17 @@ export class ProductoLista implements OnInit{
         this.cdr.detectChanges()
       },
       error: (error) => console.error("Error al intentar obtener los productos: " , error)
+    })
+  }
+
+  editarProducto(id: number){
+    this.enrutador.navigate(["editar-producto/" + id])
+  }
+
+  eliminarProducto(id: number){
+    this.productoService.eliminarProducto(id).subscribe({
+      next: (datos) => this.obtenerProductos(),
+      error: (error) => console.error("No se pudo eliminar el producto: ", error)
     })
   }
 }

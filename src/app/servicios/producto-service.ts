@@ -12,10 +12,6 @@ export class ProductoService {
     
     constructor(private clienteHttp: HttpClient){}
 
-
-
-
-
     obtenerProductos(): Observable<Producto[]>{
         return this.clienteHttp.get<Producto[]>(this.urlBase + "/todos");
     }
@@ -25,4 +21,16 @@ export class ProductoService {
         return this.clienteHttp.post(this.urlBase + "/crear", producto)
     }
 
+
+    buscarProductoPorId(id: number): Observable<Producto>{
+        return this.clienteHttp.get<Producto>(`${this.urlBase}/buscar/${id}`)
+    }
+
+    modificarProducto(id:number, producto: Producto): Observable<Object>{
+        return this.clienteHttp.patch(`${this.urlBase}/modificar/${id}`, producto)
+    }
+
+    eliminarProducto(id:number): Observable<Object>{
+        return this.clienteHttp.delete(`${this.urlBase}/eliminar/${id}`)
+    }
 }
